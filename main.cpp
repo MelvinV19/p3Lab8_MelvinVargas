@@ -22,14 +22,13 @@ int menuitem();
 int menumonstruo();
 int menutienda();
 
-//metodo para Pelear
-void pelear(Heroe*,Monstruo*);
+void binHeroe(Heroe*);
+
+
 
 
 int main(int argc, char const *argv[]) {
-  vector<Monstruo*>jefes;
-  vector<Monstruo*>semijefes;
-  vector<Monstruo*>comunes;
+  vector<Monstruo*>monstruos;
   string nombre,nombreitem,coloritem;
   int op,opi;
   Item* item;
@@ -80,24 +79,34 @@ int main(int argc, char const *argv[]) {
           srand(time(NULL));
         	vida=rand() % 40+26;
           monstruo=new Jefe(vida,2,9,nombremonstruo,debilidad);
-          jefes.push_back(monstruo);
+          monstruos.push_back(monstruo);
         }
         if(opm==2){
           srand(time(NULL));
         	vida=rand() % 26+12;
           monstruo=new Semijefe(vida,1,7,nombremonstruo,debilidad);
-          semijefes.push_back(monstruo);
+          monstruos.push_back(monstruo);
         }
         if(opm==3){
           srand(time(NULL));
         	vida=rand() % 12+4;
           monstruo=new Comun(vida,0,5,nombremonstruo,debilidad);
-          comunes.push_back(monstruo);
+          monstruos.push_back(monstruo);
         }
 
         break;
       }
       case 2:{
+        for (int i = 0; i < monstruos.size(); i++) {
+          cout<<i<<" "<<monstruos[i]->getNombre()<<endl;
+        }
+        int eliminar;
+        cout<<"Ingrese posicion del monstruo a elminar"<<endl;
+        cin>>eliminar;
+        monstruos.erase(monstruos.begin()+eliminar);
+        break;
+      }
+      case 3:{
         int opt;
         int hpactual,dineroactual;
         opt=menutienda();
@@ -116,14 +125,32 @@ int main(int argc, char const *argv[]) {
         }
         break;
       }
-      case 3:{
-
-        break;
-      }
       case 4:{
+        if(monstruos.size()>0){
+          cout<<"Lista de monstruos: "<<endl;
+          for(int i = 0; i < monstruos.size(); i++) {
+            cout<<i<<" "<<monstruos[i]->getNombre()<<endl;
+          }
+          bool ganador=false;
+          bool turno=false;
+          while (ganador==false){
+            if(turno==false){
+              cout<<"Turno del heroe"<<endl;
+              ganador=true;
+            }else{
+
+            }
+          }
+        }else{
+          cout<<"No puede pelear si no hay monstruos"<<endl;
+        }
         break;
       }
       case 5:{
+        binHeroe(heroe);
+        break;
+      }
+      case 6:{
 
         break;
       }
@@ -133,9 +160,7 @@ int main(int argc, char const *argv[]) {
   return 0;
 }
 
-void pelear(){
 
-}
 
 int menu(){
 	int bandera=0;
@@ -143,10 +168,11 @@ int menu(){
 	while(bandera==0){
 		cout<<"**********Menu***********"<<endl;
     cout<<"1.Agregar Monstruo"<<endl;
-		cout<<"2.Tienda"<<endl;
-    cout<<"3.Pelear"<<endl;
-    cout<<"4.Salvar atributos del heroe"<<endl;
-    cout<<"5.salir"<<endl;
+    cout<<"2.Eliminar Monstruo"<<endl;
+		cout<<"3.Tienda"<<endl;
+    cout<<"4.Pelear"<<endl;
+    cout<<"5.Salvar atributos del heroe"<<endl;
+    cout<<"6.salir"<<endl;
 		cout<<"Ingrese numero de opcion que desea evaluar: "<<endl;
 		cin>> num;
 		return num;
@@ -180,4 +206,11 @@ int menutienda(){
   cout<<"2.salir de la tienda"<<endl;
   cin>>op;
   return op;
+}
+
+void binHeroe(Heroe* heroe){
+  ofstream heroes("Heroe.dat",ios::binary);
+  heroe->write(heroes);
+  cout<<"Heroe guardado correctamente"<<endl;
+  heroes.close();
 }

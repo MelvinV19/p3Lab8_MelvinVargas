@@ -16,3 +16,21 @@ int Joven::getDefensa(){
 int Joven::getAtaque(){
   return ataque;
 }
+
+void Joven::write(ofstream& out){
+  int size=nombre.size();
+  //length del nombre y contenido
+  out.write(reinterpret_cast<char*>(&size),sizeof(int));
+  out.write(nombre.data(),size);
+  //vida
+  out.write(reinterpret_cast<char*>(&vida),sizeof(int));
+
+  //Item
+  out.write(reinterpret_cast<char*>(&item),sizeof(int));
+
+  //jefes derrotados
+  out.write(reinterpret_cast<char*>(&jefesderrotados),sizeof(int));
+  //dinero
+  out.write(reinterpret_cast<char*>(&dinero),sizeof(int));
+
+}

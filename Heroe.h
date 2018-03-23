@@ -2,6 +2,7 @@
 #define HEROE_H
 #include "Item.h"
 #include <string>
+#include <fstream>
 using namespace std;
 
 class Heroe{
@@ -25,7 +26,8 @@ class Heroe{
     void setItem(Item*);
     void setJefesDerrotados(int);
     void setDinero(int);
-
+    void write(ofstream&);
+    //void read(ifstream&);
 };
 
 #endif

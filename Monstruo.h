@@ -15,6 +15,7 @@ class Monstruo{
     Item* getDebilidad();
     void setNombre(string);
     void setDebilidad(Item*);
+    
 
 };
 

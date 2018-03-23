@@ -3,6 +3,7 @@
 #include "Heroe.h"
 #include <string>
 #include "Item.h"
+#include <fstream>
 using namespace std;
 
 class Joven:public Heroe{
@@ -16,6 +17,7 @@ class Joven:public Heroe{
     int getAtaque();
     Joven();
     Joven(int,int,int,string,int,Item*,int,int);
+    void write(ofstream&);
 
 };
 
