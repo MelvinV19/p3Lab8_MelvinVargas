@@ -39,20 +39,11 @@ int main(int argc, char const *argv[]) {
   cin>>nombreitem;
   cout<<"Ingrese color de su item: "<<endl;
   cin>>coloritem;
-  opi=menuitem();
-  if(opi==1){
-    item=new Bumeran(5,nombreitem,coloritem);
-  }
-  if(opi==2){
-    item=new Arco(4,nombreitem,coloritem);
-  }
-  if(opi==3){
-    item=new Bomba(10,4,nombreitem,coloritem);
-  }
+  item=new Bumeran(5,nombreitem,coloritem);
   //se crea el heroe joven
   Heroe* heroe=new Joven(2,4,0,nombre,12,item,0,0);
 
-  while (op!=5) {
+  while (op!=7) {
     switch (op=menu()) {
       case 1:{
         int opm,opd;
@@ -126,6 +117,20 @@ int main(int argc, char const *argv[]) {
         break;
       }
       case 4:{
+        cout<<"Elija el item que llevara a la pelea"<<endl;
+        opi=menuitem();
+        if(opi==1){
+          item=new Bumeran(5,nombreitem,coloritem);
+          heroe->setItem(item);
+        }
+        if(opi==2){
+          item=new Arco(4,nombreitem,coloritem);
+          heroe->setItem(item);
+        }
+        if(opi==3){
+          item=new Bomba(10,4,nombreitem,coloritem);
+          heroe->setItem(item);
+        }
         if(monstruos.size()>0){
           cout<<"Lista de monstruos: "<<endl;
           for(int i = 0; i < monstruos.size(); i++) {
@@ -135,10 +140,10 @@ int main(int argc, char const *argv[]) {
           bool turno=false;
           while (ganador==false){
             if(turno==false){
-              cout<<"Turno del heroe"<<endl;
               ganador=true;
+              turno==true;
             }else{
-
+              turno==false;
             }
           }
         }else{
@@ -151,6 +156,11 @@ int main(int argc, char const *argv[]) {
         break;
       }
       case 6:{
+
+
+        break;
+      }
+      case 7:{
 
         break;
       }
@@ -172,7 +182,8 @@ int menu(){
 		cout<<"3.Tienda"<<endl;
     cout<<"4.Pelear"<<endl;
     cout<<"5.Salvar atributos del heroe"<<endl;
-    cout<<"6.salir"<<endl;
+    cout<<"6.Cargar Heroe"<<endl;
+    cout<<"7.salir"<<endl;
 		cout<<"Ingrese numero de opcion que desea evaluar: "<<endl;
 		cin>> num;
 		return num;

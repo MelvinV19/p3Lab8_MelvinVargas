@@ -19,6 +19,7 @@ class Adulto:public Heroe{
     Adulto();
     Adulto(int,int,int,string,int,Item*,int,int);
     void write(ofstream&);
+    
 
 };
 

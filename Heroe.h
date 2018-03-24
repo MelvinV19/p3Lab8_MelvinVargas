@@ -1,6 +1,7 @@
 #ifndef HEROE_H
 #define HEROE_H
 #include "Item.h"
+#include "Monstruo.h"
 #include <string>
 #include <fstream>
 using namespace std;
@@ -27,6 +28,7 @@ class Heroe{
     void setJefesDerrotados(int);
     void setDinero(int);
     void write(ofstream&);
+    void read(ifstream&);
     //void read(ifstream&);
 };
 

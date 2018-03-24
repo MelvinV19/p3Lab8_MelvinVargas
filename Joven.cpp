@@ -1,4 +1,6 @@
 #include "Joven.h"
+#include <iostream>
+
 
 
 Joven::Joven(){
@@ -16,6 +18,8 @@ int Joven::getDefensa(){
 int Joven::getAtaque(){
   return ataque;
 }
+
+
 
 void Joven::write(ofstream& out){
   int size=nombre.size();

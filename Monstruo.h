@@ -2,6 +2,7 @@
 #define MONSTRUO_H
 #include "Item.h"
 #include <string>
+#include "Heroe.h"
 using namespace std;
 class Monstruo{
   private:
@@ -15,8 +16,6 @@ class Monstruo{
     Item* getDebilidad();
     void setNombre(string);
     void setDebilidad(Item*);
-    
-
 };
 
 #endif

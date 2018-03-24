@@ -4,7 +4,7 @@ mu.o: main.o Adulto.o Arco.o Bomba.o Bumeran.o Heroe.o Item.o Joven.o Monstruo.o
 main.o: main.cpp Adulto.h Arco.h Bomba.h Bumeran.h Heroe.h Item.h Joven.h Monstruo.h Jefe.h Semijefe.h Comun.h
 	g++ -c main.cpp
 
-Adulto.o: Adulto.cpp Adulto.h Heroe.h Item.h
+Adulto.o: Adulto.cpp Adulto.h Heroe.h Item.h Monstruo.h
 	g++ -c Adulto.cpp
 
 Arco.o: Arco.cpp Arco.h Item.h
@@ -16,16 +16,16 @@ Bomba.o: Bomba.cpp Bomba.h Item.h
 Bumeran.o: Bumeran.cpp Bumeran.h Item.h
 	g++ -c Bumeran.cpp
 
-Heroe.o: Heroe.cpp Heroe.h Item.h
+Heroe.o: Heroe.cpp Heroe.h Item.h Monstruo.h
 	g++ -c Heroe.cpp
 
 Item.o: Item.cpp Item.h
 	g++ -c Item.cpp
 
-Joven.o: Joven.cpp Joven.h Heroe.h Item.h
+Joven.o: Joven.cpp Joven.h Heroe.h Item.h Monstruo.h
 	g++ -c Joven.cpp
 
-Monstruo.o:  Monstruo.cpp Monstruo.h Item.h
+Monstruo.o:  Monstruo.cpp Monstruo.h Item.h Heroe.h
 	g++ -c Monstruo.cpp
 
 Jefe.o: Jefe.cpp Jefe.h Monstruo.h Item.h
